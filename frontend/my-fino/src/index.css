@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply font-['Inter'] text-zinc-800 bg-zinc-50 antialiased selection:bg-orange-500 selection:text-white transition-colors duration-200;
+  }
+  .dark body {
+    @apply text-zinc-200 bg-zinc-950;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Outfit'];
+  }
+
+  /* Light mode: readable defaults for all text fields */
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']):not([type='submit']):not([type='button']):not([type='reset']):not([type='hidden']):not([type='color']),
+  textarea,
+  select {
+    @apply bg-white text-zinc-900 border-zinc-300;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-zinc-400;
+  }
+
+  /* Dark mode: override utilities & inherited body text so fields stay readable */
+  .dark input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']):not([type='submit']):not([type='button']):not([type='reset']):not([type='hidden']):not([type='color']),
+  .dark textarea,
+  .dark select {
+    @apply bg-zinc-800 text-zinc-100 border-zinc-600;
+    color: rgb(244 244 245) !important;
+    background-color: rgb(39 39 42) !important;
+    -webkit-text-fill-color: rgb(244 244 245);
+  }
+
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    @apply text-zinc-500;
+    -webkit-text-fill-color: rgb(113 113 122);
+    opacity: 1;
+  }
+
+  .dark input:disabled,
+  .dark textarea:disabled,
+  .dark select:disabled {
+    @apply bg-zinc-900 text-zinc-400 border-zinc-700;
+    color: rgb(161 161 170) !important;
+    background-color: rgb(24 24 27) !important;
+    -webkit-text-fill-color: rgb(161 161 170);
+  }
+
+  .dark select option {
+    @apply bg-zinc-800 text-zinc-100;
+  }
+
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark textarea:-webkit-autofill,
+  .dark textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px rgb(39 39 42) inset !important;
+    -webkit-text-fill-color: rgb(244 244 245) !important;
+    caret-color: rgb(244 244 245);
+  }
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.dark .glass {
+  @apply bg-zinc-900/70 border-zinc-700/50;
+}
