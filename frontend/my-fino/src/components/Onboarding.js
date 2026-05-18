@@ -10,9 +10,10 @@ const Onboarding = () => {
   const handleComplete = async () => {
     setLoading(true);
     const user = JSON.parse(localStorage.getItem('user'));
+    const API_BASE = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/$/, '');
     
     try {
-      const res = await fetch('http://localhost:5000/api/onboarding', {
+      const res = await fetch(`${API_BASE}/api/onboarding`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: user.id, ...formData })
