@@ -1089,9 +1089,7 @@ const Dashboard = () => {
     return { ...meta, spent, limit: budgets[meta.key] || 0 };
   });
 
-  const savingsTargetNum = Number(user.savingsTarget) || 0;
-  const savingsSavedNum = Number(user.savingsSaved) || 0;
-  const savingsPct = savingsTargetNum > 0 ? Math.min(100, Math.round((savingsSavedNum / savingsTargetNum) * 100)) : 0;
+
 
   const insights = computeInsights(transactionsList, budgets);
 
