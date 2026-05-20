@@ -9,6 +9,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Root health check route
+app.get('/', (req, res) => {
+  res.json({ status: 'healthy', message: 'Fino Backend API is running' });
+});
+
 mongoose.connect(process.env.MONGO_URI || 'mongodb://ahsanprog:Ahsan.malik%401176@ac-hl77z6z-shard-00-00.6o78cnp.mongodb.net:27017,ac-hl77z6z-shard-00-01.6o78cnp.mongodb.net:27017,ac-hl77z6z-shard-00-02.6o78cnp.mongodb.net:27017/fino?ssl=true&replicaSet=atlas-tefby5-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Fino')
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch((err) => console.error('MongoDB connection error:', err));
